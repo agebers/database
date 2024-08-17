@@ -5,7 +5,7 @@ public class Database {
     private String dbUsername;
     private String dbPassword;
     private Connection dbCon;
-    ResultSet resultSet;
+    private ResultSet resultSet;
     private PreparedStatement preparedStatement;
 
     public Database(String databaseName, String username, String password, String databasePort) {
