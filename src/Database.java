@@ -15,14 +15,19 @@ public class Database {
     }
 
     public String getMovieTitle(int id) throws SQLException {
-        open();
+        String title = "";
         String sqlQuery = "SELECT title FROM movie WHERE id = ?";
+        open();
         preparedStatement = dbCon.prepareStatement(sqlQuery);
         preparedStatement.setInt(1, id);
         resultSet = preparedStatement.executeQuery();
-        resultSet.next();
+
+        if (resultSet.next()) {
+            title = resultSet.getString("title");
+        }
+
         close();
-        return resultSet.getString("title");
+        return title;
     }
 
     public void open() throws SQLException {
